@@ -49,13 +49,11 @@ int main()
 	{
 		voice2.push_back(signal);
 	}
-	cout << voice1.size() << endl;
-	cout << voice2.size() << endl;
-	
+	fout <<"Team Members: "<< setw(6)<<" Bianca Hernandez    Coleman Johnston   Lesley Amezcua" << endl << endl;
 	voice1Avg = mean(voice1, voice1.size());
 	voice2Avg = mean(voice2, voice2.size());
-	fout << fixed << setprecision(2);
-	fout << "\t\tVoice 1\t\tVoice 2\t\t% Difference" << endl;
+	fout << fixed << setprecision(5);
+	fout << "\t\ttwo_a.txt\ttwo_b.txt\t% Difference" << endl;
 	fout << "Mean:\t\t" << voice1Avg << "\t\t" << voice2Avg << "\t\t" << perDif(voice1Avg, voice2Avg) << endl;
 	
 	voice1Var = variance(voice1, voice1.size(), voice1Avg);
@@ -76,7 +74,7 @@ int main()
 	
 	voice1Zero = zeroCrossings(voice1, voice1.size());
 	voice2Zero = zeroCrossings(voice2, voice2.size());
-	fout << "Crossings: \t" << voice1Zero << "\t\t" << voice2Zero << "\t\t" << perDif(voice1Zero, voice2Zero) << endl;
+	fout << "Crossings: \t" << voice1Zero << "\t" << voice2Zero << "\t" << perDif(voice1Zero, voice2Zero) << endl;
 	
 	fin.close();
 	fin1.close();
@@ -87,13 +85,13 @@ int main()
 //*************************************************************
 double mean(vector<double> v, int n)
 {
-	int total = 0;//sum of all elements in the vector v.
+	double total = 0;//sum of all elements in the vector v.
     double avg;//the average or mean 
     for (int i = 0; i < n; i++)
     {
         total += v[i];
     }
-    avg = static_cast<double>(total) / n;
+    avg = total / n;
 	return avg;//return the average or mean
 }// End of means
 
