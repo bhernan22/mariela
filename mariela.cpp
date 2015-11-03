@@ -2,24 +2,70 @@
 // Coleman Johnston
 // Lesley Amezcua
 // Created: 10/30/15
-// Summary: 
-//
+// Summary: Determining whether or not Maria's voice was found in the voice 
+//recording 
+// The values that match most closely: Standard Deviation 
+// The values that are most different: Number of zero crossings
+// Based on our results in the number of zero crossings we conclude that
+//the sound recordings are from different people.
 //**********************************************************************
-#include <iostream>
-#include <fstream>
-#include <vector>
+#include <iostream>//cout
+#include <fstream>//file in/out
+#include <vector>//vectors
 #include <cstdlib>
-#include <cmath>
-#include <iomanip>
+#include <cmath>//fabs(),pow()
+#include <iomanip>//setw()
 
 using namespace std;
+
+//***********************************************************************
 double mean(vector<double> v, int n);
+//Summary: Calculates the average.
+//Precondition: Takes in a vector of type double and the number of values
+//inside the vector.
+//Postcondition: Returns the mean (or average) of all the values in the 
+//vector or from v[0] to v[n]. 
+//
+//***********************************************************************
 double variance(vector<double> v, int n, double means);
+//Summary: Calculates the variance.
+//Precondition: Takes in a vector of doubles, the number of elements in
+//the vector, and the mean of all the values in the vector.
+//Postcondition: Returns the variance of all the values in the vector.
+//***********************************************************************
 double stdDev(double var);
+//Summary: Calculates the standard deviation.
+//Precondition: Takes in the variance.
+//Postcondition: Returns the standard deviation based on the variance.
+//
+//***********************************************************************
 double avgMagnitude(vector<double> v, int n);
+//Summary: Calculates the average magnitude.
+//Precondition: Takes in a vector filled with doubles, and the number of 
+//elements in the vector.
+//Postcondition: Returns the average magnitude of the values in the vector
+//from v[0] to v[n].
+//
+//***********************************************************************
 double avgPower(vector<double> v, int n);
+//Summary: Calculates the average power.
+//Precondition: Takes in a vector of doubles and the number of elements in
+//the vector.
+//Postcondition: Returns the average power of all the values in the vector.
+//
+//***********************************************************************
 int zeroCrossings(vector<double> v, int n);
+//Summary: Finds the number of zero crossings.
+//Precondition: Takes in a vector of doubles, and the number of elements
+//in the vector.
+//Postcondition: Returns the number of times the values in the vector 
+//cross zero (go from <0 to >0 or vice versa).
+//
+//***********************************************************************
 double perDif(double a, double b);
+//Summary: Calculates the percent difference 
+//
+//***********************************************************************
 
 int main()
 {
@@ -52,29 +98,29 @@ int main()
 	fout <<"Team Members: "<< setw(6)<<" Bianca Hernandez    Coleman Johnston   Lesley Amezcua" << endl << endl;
 	voice1Avg = mean(voice1, voice1.size());
 	voice2Avg = mean(voice2, voice2.size());
-	fout << fixed << setprecision(5);
-	fout << "\t\ttwo_a.txt\ttwo_b.txt\t% Difference" << endl;
-	fout << "Mean:\t\t" << voice1Avg << "\t\t" << voice2Avg << "\t\t" << perDif(voice1Avg, voice2Avg) << endl;
+	fout << fixed << setprecision(5) << left << setw(12);
+	fout << "\t\t\t\ttwo_a.txt\ttwo_b.txt\t% Difference" << endl;
+	fout << "Mean:\t\t\t" << voice1Avg << "\t\t" << voice2Avg << "\t\t" << perDif(voice1Avg, voice2Avg) << endl;
 	
 	voice1Var = variance(voice1, voice1.size(), voice1Avg);
 	voice2Var = variance(voice2, voice2.size(), voice2Avg);
-	fout << "Variance: \t" << voice1Var << "\t\t"<< voice2Var << "\t\t" << perDif(voice1Var, voice2Var) << endl;
+	fout << "Variance: \t\t" << voice1Var << "\t\t"<< voice2Var << "\t\t"<< perDif(voice1Var, voice2Var) << endl;
 	
 	voice1SD = stdDev(voice1Var);
 	voice2SD = stdDev(voice2Var);
-	fout << "StdDeviation: \t" << voice1SD << "\t\t"<< voice2SD <<"\t\t" << perDif(voice1SD, voice2SD) << endl;
+	fout << "StdDeviation: \t" << voice1SD << "\t\t"<< voice2SD << "\t\t"<< perDif(voice1SD, voice2SD) << endl;
 	
 	voice1Mag = avgMagnitude(voice1, voice1.size());
 	voice2Mag = avgMagnitude(voice2, voice2.size());
-	fout << "Magnitude: \t" << voice1Mag << "\t\t" << voice2Mag << "\t\t" << perDif(voice1Mag, voice2Mag) << endl;
+	fout << "Magnitude: \t\t" << voice1Mag << "\t\t" << voice2Mag << "\t\t" << perDif(voice1Mag, voice2Mag) << endl;
 	
 	voice1Pow = avgPower(voice1, voice1.size());
 	voice2Pow = avgPower(voice2, voice2.size());
-	fout << "Power: \t\t" << voice1Pow << "\t\t" << voice2Pow << "\t\t" << perDif(voice1Pow, voice2Pow) << endl;
+	fout << "Power: \t\t\t" << voice1Pow << "\t\t" << voice2Pow << "\t\t" << perDif(voice1Pow, voice2Pow) << endl;
 	
 	voice1Zero = zeroCrossings(voice1, voice1.size());
 	voice2Zero = zeroCrossings(voice2, voice2.size());
-	fout << "Crossings: \t" << voice1Zero << "\t" << voice2Zero << "\t" << perDif(voice1Zero, voice2Zero) << endl;
+	fout << "Crossings: \t\t" << voice1Zero << "\t" << voice2Zero << "\t" << perDif(voice1Zero, voice2Zero) << endl;
 	
 	fin.close();
 	fin1.close();

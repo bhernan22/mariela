@@ -1,0 +1,9 @@
+Team Members:  Bianca Hernandez    Coleman Johnston   Lesley Amezcua
+
+				two_a.txt	two_b.txt	% Difference
+Mean:			0.00244		0.00231		5.43769
+Variance: 		0.11161		0.10385		7.20701
+StdDeviation: 	0.33408		0.32225		3.60468
+Magnitude: 		0.22694		0.27309		18.45769
+Power: 			0.11161		0.10385		7.20720
+Crossings: 		111.00000	69.00000	46.66667
